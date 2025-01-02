@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./styles/reset";
+@import "./styles/variables";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,4 +21,11 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 114rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }

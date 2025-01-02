@@ -1,0 +1,44 @@
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.size {
+  .title {
+    font-size: var(--line-height-small);
+  }
+
+  .text {
+    font-size: var(--font-size-small);
+  }
+}
+
+.medium {
+  .title {
+    font-size: var(--line-height-medium);
+
+  }
+
+  .text {
+    font-size: var(--font-size-medium);
+
+  }
+}
+
+.large {
+  .title {
+    font-size: var(--line-height-large);
+
+  }
+
+  .text {
+    font-size: var(--font-size-large);
+  }
+}

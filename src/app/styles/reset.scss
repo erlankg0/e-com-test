@@ -1,0 +1,108 @@
+/* Устанавливаем box-sizing для всех элементов */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Сбрасываем отступы и поля */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+figure,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Сбрасываем стили для списка */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Убираем подчеркивание у ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Убираем обводку у фокусных элементов (оставьте, если нужно для accessibility) */
+:focus {
+  outline: none;
+}
+
+/* Обнуляем стили таблиц */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+caption {
+  display: none;
+}
+
+td,
+th {
+  padding: 0;
+  text-align: left;
+}
+
+/* Убираем базовые стили кнопок и инпутов */
+button,
+input,
+textarea,
+select {
+  background: none;
+  border: none;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  color: inherit;
+}
+
+/* Убираем оформление кнопок */
+button {
+  cursor: pointer;
+}
+
+/* Убираем стрелочки у инпутов type=number */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Сбрасываем стили для img, видео, и аудио */
+img,
+video,
+audio {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Добавляем базовый стиль для body */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  background-color: #fff;
+  color: #333;
+}

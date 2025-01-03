@@ -20,14 +20,17 @@ export const UiText: FC<IUiTextProps> = (props) => {
   } = props;
 
   const mods: Mods = {
-    [cls[align]]: !!align,
-    [cls[size]]: true,
+    [cls[align]]: true, // Пример: cls.left, cls.right
+    [cls[size]]: true,  // Пример: cls.small, cls.medium, cls.large
   };
 
+
+
   return (
-    <div className={classNames(cls.text, mods, [className, size])}>
-      {title && (<p className={classNames(cls.title, mods)}>{title}</p>)}
-      {text && (<p className={classNames(cls.text, mods)}>{text}</p>)}
-    </div>
+    <article className={classNames(cls.textContainer, mods, [className])}>
+      {title && <h2 className={classNames(cls.title)}>{title}</h2>}
+      {text && <p className={classNames(cls.text)}>{text}</p>}
+    </article>
   );
+
 };

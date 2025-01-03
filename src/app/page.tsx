@@ -1,4 +1,4 @@
-import { ProductItem } from '@/entities/Product/ui/product-item';
+import { ProductItem } from '@/entities/Product';
 
 const products = {
   id: '1',

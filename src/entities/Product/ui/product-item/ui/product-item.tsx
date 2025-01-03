@@ -7,6 +7,7 @@ import { classNames } from '@/shared/lib/classnames';
 import cls from './product-item.module.scss';
 import photo from '../photos/product-1-2.webp';
 import photo1 from '../photos/product-1-1.webp';
+import { UiButton } from '@/shared/ui/UiButton';
 
 export const ProductItem: FC<ProductItemProps> = (props) => {
   const {
@@ -32,7 +33,7 @@ export const ProductItem: FC<ProductItemProps> = (props) => {
         className={classNames(cls.image, {}, [cls.secondImage])} // Add secondImage class
       />
       <div className={cls.buttonInfo}>
-        <button className={cls.buyButton}>buy</button>
+        <UiButton className={cls.buy}>Buy</UiButton>
       </div>
     </div>
   );

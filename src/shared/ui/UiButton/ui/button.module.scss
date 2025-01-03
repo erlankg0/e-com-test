@@ -1,0 +1,16 @@
+.button {
+  cursor: pointer;
+  color: black;
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-medium);
+  transition: all 0.2s ease; /* Плавность анимации */
+  border-radius: 4px; /* Закругляем углы */
+
+  &:hover {
+    color: var(--foreground);
+  }
+
+  &:active {
+    transform: scale(0.95); /* Эффект уменьшения при клике */
+  }
+}

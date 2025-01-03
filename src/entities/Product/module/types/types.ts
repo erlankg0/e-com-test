@@ -7,3 +7,10 @@ export type Product = {
   images: string[];
   isNew: boolean;
 }
+
+export interface ProductState {
+  isLoading?: boolean;
+  error?: string;
+  data?: Product[];
+}
+

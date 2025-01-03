@@ -46,7 +46,8 @@
   flex-direction: column;
   gap: 1rem;
 }
-.buttonInfo{
+
+.buttonInfo {
   position: absolute;
   bottom: 1.5rem;
   left: 50%;
@@ -68,3 +69,9 @@
   transform: translateX(-50%) translateY(0); /* Поднимаем кнопку вверх */
 }
 
+.buy {
+  background-color: var(--background);
+  padding: .5rem;
+  border-radius: 4px;
+  border: solid 1px var(--foreground);
+}

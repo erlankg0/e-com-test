@@ -47,9 +47,9 @@ export const ProductItem: FC<ProductItemProps> = (props) => {
         )}
       </header>
       <footer>
-        <UiText size={'small'} text={product.category} />
-        <UiText size={'medium'} title={product.title} />
-        <UiText size={'medium'} title={`$ ${product.price}`} />
+        <UiText className={cls.category} size={'small'} text={product.category} />
+        <UiText className={cls.title} size={'medium'} title={product.title} />
+        <UiText className={cls.price} size={'medium'} title={`$ ${product.price}`} />
       </footer>
     </UiCard>
   );

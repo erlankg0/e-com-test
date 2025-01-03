@@ -1,22 +1,19 @@
 'use client';
-import { ProductItem } from '@/entities/Product';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/app/store';
-import { fetchProductData } from '@/entities/Product/service/fetch-data';
 import {
+  fetchProductData,
   getProductIsError,
   getProductIsLoading,
   getProductsData,
-} from '@/entities/Product/module/selectors/product-seletors';
-import { Product } from '@/entities/Product/module/types/types';
-
+  ProductList,
+} from '@/entities/Product';
 
 export default function Home() {
   const dispatch = useAppDispatch();
   const products = useAppSelector(getProductsData);
   const isLoading = useAppSelector(getProductIsLoading);
   const error = useAppSelector(getProductIsError);
-
 
   useEffect(() => {
     dispatch(fetchProductData());
@@ -30,14 +27,13 @@ export default function Home() {
     return <div>{error}</div>;
   }
 
-  if (products != undefined) {
-    return (
-      <main>
-        {products.map((product: Product) => (<ProductItem product={product} />))}
-      </main>
-    );
+  if (!products?.length) {
+    return <div>No products found.</div>;
   }
 
-  return <div>No products available</div>;
-
+  return (
+    <section>
+      <ProductList products={products} isLoading={isLoading} />
+    </section>
+  );
 }

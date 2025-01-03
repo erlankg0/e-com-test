@@ -1,8 +1,9 @@
 import { FC } from 'react';
+import type { Product, ProductView } from '@/entities/Product';
+import { ProductItem, ProductItemSkeleton } from '../../product-item';
 import { IProductListProps } from '../model/types';
-import { Product, ProductView } from '@/entities/Product/module/types/types';
-import { ProductItem } from '../../product-item';
-import { ProductItemSkeleton } from '../../product-item';
+import cls from './product.module.scss';
+import { classNames, Mods } from '@/shared/lib/classnames';
 
 const getSkeletons = (view: ProductView) => new Array(view === 'small' ? 9 : 3)
   .fill(0)
@@ -14,7 +15,7 @@ export const ProductList: FC<IProductListProps> = (props) => {
   const {
     products,
     isLoading,
-    view = 'small',
+    view = 'medium',
   } = props;
 
   if (isLoading) {
@@ -30,10 +31,15 @@ export const ProductList: FC<IProductListProps> = (props) => {
   }
 
   const renderProduct = (product: Product) => {
-    return <ProductItem product={product} />;
+    return <ProductItem product={product} view={view} />;
   };
+
+  const mods: Mods = {
+    [cls[view]]: !!view,
+  };
+
   return (
-    <section>
+    <section className={classNames(cls.list, mods)}>
       {products.length > 0 && (
         products.map((product) => renderProduct(product))
       )}

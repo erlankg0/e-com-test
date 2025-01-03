@@ -26,17 +26,29 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
-    <body
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
     <StoreProvider>
-      <div className={'container'}>
-        <Header />
-        {children}
+      <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ width: '200px' }}> {/* Реклама слева */}
+          Реклама слева
+        </div>
+
+        <div className="container" style={{ flex: 1 }}>
+          <Header />
+          {children}
+        </div>
+
+        <div style={{ width: '200px' }}> {/* Реклама справа */}
+          Реклама справа
+        </div>
       </div>
+
+
+      </body>
+      </html>
     </StoreProvider>
-    </body>
-    </html>
   );
 }

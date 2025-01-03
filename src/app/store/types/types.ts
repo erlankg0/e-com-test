@@ -1,6 +1,7 @@
 import { ProductState } from '@/entities/Product/module/types/types';
 import { AnyAction, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { ReactNode } from 'react';
+import { AxiosInstance } from 'axios';
 
 export interface StoreSchema {
   products: ProductState;
@@ -33,3 +34,13 @@ export interface ReducerManager<S extends Record<string, any>> {
   remove: (key: StoreSchemaKeys) => void;
 }
 
+export interface ThunkExtraArg {
+  api: AxiosInstance;
+}
+
+
+export interface ThunkConfig<T> {
+  rejectValue: T;
+  extra: ThunkExtraArg;
+  state: StoreSchema;
+}

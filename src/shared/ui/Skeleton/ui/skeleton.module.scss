@@ -1,0 +1,38 @@
+.ui-skeleton {
+  display: block;
+  width: 100%; /* Устанавливается динамически */
+  height: 1.6rem; /* Стандартная высота строки */
+  background-color: #e0e0e0; /* Светло-серый цвет */
+  border-radius: 4px; /* Слегка скругленные края */
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 1px 0 var(--skeleton-shadow);
+  margin-bottom: 1rem;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+                    to right,
+                    transparent 0%,
+                    var(--foreground) 50%,
+                    transparent 100%
+    );
+    animation: skeleton-loading 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
+
+@keyframes skeleton-loading {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}

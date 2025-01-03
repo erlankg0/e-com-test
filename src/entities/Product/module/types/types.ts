@@ -1,3 +1,5 @@
+import { Reducer } from '@reduxjs/toolkit';
+
 export type Product = {
   id: string;
   title: string;
@@ -14,3 +16,4 @@ export interface ProductState {
   data?: Product[];
 }
 
+export type ProductView = 'small' | 'medium' | 'large';

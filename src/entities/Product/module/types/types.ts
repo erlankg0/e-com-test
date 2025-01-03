@@ -1,5 +1,3 @@
-import { Reducer } from '@reduxjs/toolkit';
-
 export type Product = {
   id: string;
   title: string;
@@ -9,11 +7,21 @@ export type Product = {
   images: string[];
   isNew: boolean;
 }
+export type ProductView = 'small' | 'medium' | 'large';
 
 export interface ProductState {
   isLoading?: boolean;
   error?: string;
   data?: Product[];
+  view?: ProductView;
+  sort?: ProductSortField;
+  search?: string;
 }
 
-export type ProductView = 'small' | 'medium' | 'large';
+export enum ProductSortField {
+  ISNEW = 'ISNEW',
+  TITLE = 'TITLE',
+  MINPRICE = 'MINPRICE',
+  MAXPRICE = 'MAXPRICE',
+}
+

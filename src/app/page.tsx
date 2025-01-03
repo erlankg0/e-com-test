@@ -8,6 +8,7 @@ import {
   getProductsData,
   ProductList,
 } from '@/entities/Product';
+import { ProductFilters } from '@/features/product-filters';
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -32,8 +33,9 @@ export default function Home() {
   }
 
   return (
-    <section>
+    <>
+      <ProductFilters />
       <ProductList products={products} isLoading={isLoading} />
-    </section>
+    </>
   );
 }

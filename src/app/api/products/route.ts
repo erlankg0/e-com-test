@@ -1,5 +1,5 @@
 import { Product } from '@/entities/Product/module/types/types';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const products: Product[] = [
   {
@@ -94,6 +94,65 @@ const products: Product[] = [
   },
 ];
 
-export async function GET() {
-  return NextResponse.json(products);
+export async function GET(request: NextRequest) {
+  const url = new URL(request.url);
+
+  const minPrice = url.searchParams.get('MINPRICE');
+  const maxPrice = url.searchParams.get('MAXPRICE');
+  const title = url.searchParams.get('TITLE');
+  const isNew = url.searchParams.get('ISNEW');
+  const sort = url.searchParams.get('sort');
+
+  let filteredProducts = products;
+
+  // Фильтрация по цене
+  if (minPrice && !isNaN(Number(minPrice))) {
+    filteredProducts = filteredProducts.filter((product) => product.price >= Number(minPrice));
+  }
+
+  if (maxPrice && !isNaN(Number(maxPrice))) {
+    filteredProducts = filteredProducts.filter((product) => product.price <= Number(maxPrice));
+  }
+
+  // Фильтрация по названию (case-insensitive)
+  if (title) {
+    filteredProducts = filteredProducts.filter((product) =>
+      product.title.toLowerCase().includes(title.toLowerCase()),
+    );
+  }
+
+  // Фильтрация по новизне
+  if (isNew) {
+    const isNewBoolean = isNew === 'true'; // Преобразуем в булево значение
+    filteredProducts = filteredProducts.filter((product) => product.isNew === isNewBoolean);
+  }
+
+  // Сортировка
+  if (sort) {
+    switch (sort) {
+      case 'MAXPRICE':
+        filteredProducts = filteredProducts.sort((a, b) => b.price - a.price); // Сортировка по убыванию цены
+        break;
+      case 'MINPRICE':
+        filteredProducts = filteredProducts.sort((a, b) => a.price - b.price); // Сортировка по возрастанию цены
+        break;
+      case 'TITLE':
+        filteredProducts = filteredProducts.sort((a, b) =>
+          a.title.localeCompare(b.title), // Сортировка по названию (алфавитный порядок)
+        );
+        break;
+      case 'ISNEW':
+        filteredProducts = filteredProducts.sort((a, b) => {
+          // Сортировка по новизне (сначала новинки)
+          if (a.isNew === b.isNew) return 0;
+          return a.isNew ? -1 : 1;
+        });
+        break;
+      default:
+        break;
+    }
+  }
+
+
+  return NextResponse.json(filteredProducts);
 }

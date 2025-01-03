@@ -1,0 +1,1 @@
+export const VIEW_LOCAL_STORAGE = 'VIEW_LOCAL_STORAGE';

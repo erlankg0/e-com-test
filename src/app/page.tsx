@@ -1,22 +1,41 @@
-import { ProductItem } from '@/entities/Product';
-
-const products = {
-  id: '1',
-  title: 'Cropped Faux Leather Jacket',
-  category: 'Jackets',
-  description: 'A stylish faux leather jacket, perfect for all seasons.',
-  price: 99.99,
-  images: [
-    '/photo/product-1-1.webp',
-    '/photo/product-1-2.webp',
-  ],
-  isNew: true,
-};
+'use client';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '@/app/store';
+import {
+  fetchProductData,
+  getProductIsError,
+  getProductIsLoading,
+  getProductsData,
+  ProductList,
+} from '@/entities/Product';
+import { ProductFilters } from '@/features/product-filters';
 
 export default function Home() {
+  const dispatch = useAppDispatch();
+  const products = useAppSelector(getProductsData);
+  const isLoading = useAppSelector(getProductIsLoading);
+  const error = useAppSelector(getProductIsError);
+
+  useEffect(() => {
+    dispatch(fetchProductData());
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <div>..Loading..</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!products?.length) {
+    return <div>No products found.</div>;
+  }
+
   return (
-    <main>
-      <ProductItem product={products} />
-    </main>
+    <>
+      <ProductFilters />
+      <ProductList products={products} isLoading={isLoading} />
+    </>
   );
 }

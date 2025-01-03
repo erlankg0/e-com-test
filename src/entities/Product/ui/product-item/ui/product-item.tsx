@@ -15,21 +15,20 @@ export const ProductItem: FC<ProductItemProps> = (props) => {
     className,
   } = props;
 
+
   const Images = product.images.length >= 2 && (
     <div className={classNames(cls.imageWrapper)}>
       {product.isNew && (<span className={cls.isNew}>NEW</span>)}
       <Image
         src={photo1}
         alt={`product image ${product.id}`}
-        width={330}
-        height={400}
+
         className={classNames(cls.image, {}, [cls.firstImage])} // Add firstImage class
       />
       <Image
         src={photo}
         alt={`product image ${product.id}`}
-        width={330}
-        height={400}
+
         className={classNames(cls.image, {}, [cls.secondImage])} // Add secondImage class
       />
       <div className={cls.buttonInfo}>
@@ -40,7 +39,7 @@ export const ProductItem: FC<ProductItemProps> = (props) => {
 
   return (
     <UiCard className={classNames(cls.card, {}, [className])}>
-      <header>
+      <header className={cls.header}>
         {Images ? (
           Images
         ) : (
@@ -48,9 +47,9 @@ export const ProductItem: FC<ProductItemProps> = (props) => {
         )}
       </header>
       <footer>
-        <UiText size={'small'} text={product.category} />
-        <UiText size={'medium'} title={product.title} />
-        <UiText size={'medium'} title={`$ ${product.price}`} />
+        <UiText className={cls.category} size={'small'} text={product.category} />
+        <UiText className={cls.title} size={'medium'} title={product.title} />
+        <UiText className={cls.price} size={'medium'} title={`$ ${product.price}`} />
       </footer>
     </UiCard>
   );

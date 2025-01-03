@@ -23,9 +23,36 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
-  max-width: 114rem;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+.layout-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 100vh; /* Устанавливаем высоту контейнера */
+}
+
+.ad-widget-left,
+.ad-widget-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px; /* Ширина рекламы */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.ad-widget-left {
+  left: 0; /* Прикрепляем слева */
+}
+
+.ad-widget-right {
+  right: 0; /* Прикрепляем справа */
+}
+
+.content-container {
+  flex: 1;
+  padding: 10px;
+  margin-left: 200px; /* Отступ для левой рекламы */
+  margin-right: 200px; /* Отступ для правой рекламы */
 }

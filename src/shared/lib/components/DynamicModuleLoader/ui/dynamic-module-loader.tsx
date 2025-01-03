@@ -45,7 +45,7 @@ export const DynamicModuleLoader: FC<IDynamicModuleLoaderProps> = (props) => {
       }
     };
     // @ts-ignore
-    
+
   }, [dispatch, reducerKey, store.reducerManager, removeAfterUnMount, reducers]);  // Теперь useEffect будет зависеть от этих значений
 
   return (

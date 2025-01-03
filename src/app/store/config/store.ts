@@ -2,6 +2,7 @@ import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { StoreSchema } from '@/app/store/types/types';
 import { productReducer } from '@/entities/Product';
 import { createReducerManager } from '@/app/store/config/reducer-manager';
+import { $api } from '@/shared/api/api';
 
 export const createReduxStore = (initialState?: StoreSchema, asyncReducers?: Partial<ReducersMapObject<StoreSchema>>) => {
   const rootReducer: ReducersMapObject<StoreSchema> = {
@@ -15,6 +16,13 @@ export const createReduxStore = (initialState?: StoreSchema, asyncReducers?: Par
   const store = configureStore({
     reducer: rootReducer,
     preloadedState: initialState,
+    middleware: getDefaultMiddleware => getDefaultMiddleware({
+      thunk: {
+        extraArgument: {
+          api: $api,
+        },
+      },
+    }),
   });
 
   // Add the reducer manager to the store

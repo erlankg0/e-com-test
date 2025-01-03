@@ -1,3 +1,4 @@
+"use client"
 import { FC } from 'react';
 import { IStoreProvider, StoreSchema } from '@/app/store/types/types';
 import { createReduxStore } from '@/app/store/config/store';

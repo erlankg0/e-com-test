@@ -31,7 +31,9 @@ export const ProductItem: FC<ProductItemProps> = (props) => {
         height={400}
         className={classNames(cls.image, {}, [cls.secondImage])} // Add secondImage class
       />
-      <button className={cls.buyButton}>buy</button>
+      <div className={cls.buttonInfo}>
+        <button className={cls.buyButton}>buy</button>
+      </div>
     </div>
   );
 
